@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style type="text/css">
+    <!--
+    #keyboard {
+        width: 80%;
+        position relative;
+    }
+    .whitekey {
+        width: 5%;
+        height: 180px;
+        text-align: center;
+        display: inline-block;
+        border: 1px solid #000;
+    }
+    .whitekey:hover{
+        background-color: #eee;
+    }
+
+    .blackkey{
+        width: 3%;
+        height: 100px;
+        display: inline-block;
+        margin-left: -1.7%;
+        background-color: #000;
+        position: absolute;
+    }
+    .blackkey:hover{
+        background-color: #333;
+    }
+    -->
+    </style>
+    <ul id="keyboard">
+        <li data-key="C4" class="whitekey"></li>
+        <li data-key="C#4" class="blackkey"></li> 
+        <li data-key="D4" class="whitekey"></li>
+        <li data-key="D#4" class="blackkey"></li> 
+        <li data-key="E4" class="whitekey"></li>
+        <li data-key="F4" class="whitekey"></li>
+        <li data-key="F#4" class="blackkey"></li>
+        <li data-key="G4" class="whitekey"></li>
+        <li data-key="G#4" class="blackkey"></li>
+        <li data-key="A4" class="whitekey"></li>
+        <li data-key="A#4" class="blackkey"></li>
+        <li data-key="B4" class="whitekey"></li>
+        <li data-key="C5" class="whitekey"></li>
+        <li data-key="C#5" class="blackkey"></li> 
+        <li data-key="D5" class="whitekey"></li>
+        <li data-key="D#5" class="blackkey"></li> 
+        <li data-key="E5" class="whitekey"></li>
+        <li data-key="F5" class="whitekey"></li>
+        <li data-key="F#5" class="blackkey"></li>
+        <li data-key="G5" class="whitekey"></li>
+        <li data-key="G#5" class="blackkey"></li>
+        <li data-key="A5" class="whitekey"></li>
+        <li data-key="A#5" class="blackkey"></li>
+        <li data-key="B5" class="whitekey"></li>
+        <li data-key="C6" class="whitekey"></li>
+    </ul>
+    <script src="http://chamu.org/tonejs/Tone.min.js"></script>
+    <script>
+    var synth;
+    window.onload = function(){
+        synth = new Tone.Synth().toMaster();
+    }
+
+    window.addEventListener('mousedown', playSound);
+    window.addEventListener('touchstart', playSound);
+
+    function playSound(e){
+        var key = e.target.dataset.key;
+
+        if (typeof key == "undefined") return;
+
+        synth.triggerAttackRelease(key, '8n');
+    }
+    </script>
+</body>
+</html>
